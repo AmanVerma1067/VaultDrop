@@ -40,7 +40,7 @@
 
 ## 🧠 About
 
-**VaultDrop** (originally *NextDrive*) is a full-stack cloud storage web application inspired by Google Drive. It allows authenticated users to upload, search, preview, share, and delete files — all powered by a serverless architecture with edge-ready database and CDN-backed file storage.
+**VaultDrop** is a full-stack cloud storage web application inspired by Google Drive. It allows authenticated users to upload, search, preview, share, and delete files — all powered by a serverless architecture with edge-ready database and CDN-backed file storage.
 
 Built with **Next.js 16 App Router**, **Turso (libSQL/SQLite)** for the database, **Cloudinary** for file storage & delivery, and **NextAuth v5** for secure credential-based authentication.
 
