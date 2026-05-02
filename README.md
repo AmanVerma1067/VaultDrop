@@ -1,6 +1,6 @@
-<p align="center">
+<!-- <p align="center">
   <img src="https://img.icons8.com/fluency/96/hard-drive.png" alt="VaultDrop Logo" width="80" />
-</p>
+</p> -->
 
 <h1 align="center">VaultDrop ☁️</h1>
 
