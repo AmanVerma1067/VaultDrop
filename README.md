@@ -34,7 +34,6 @@
 - [Running Locally](#-running-locally)
 - [API Reference](#-api-reference)
 - [Deployment](#-deployment)
-- [Suggested Name](#-suggested-project-name)
 - [License](#-license)
 
 ---
