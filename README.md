@@ -1,7 +1,3 @@
-<!-- <p align="center">
-  <img src="https://img.icons8.com/fluency/96/hard-drive.png" alt="VaultDrop Logo" width="80" />
-</p> -->
-
 <h1 align="center">VaultDrop ☁️</h1>
 
 <p align="center">
@@ -18,29 +14,18 @@
   <img src="https://img.shields.io/badge/Cloudinary-CDN-3448C5?logo=cloudinary&logoColor=white" alt="Cloudinary" />
 </p>
 
----
-
-## 📖 Table of Contents
-
-- [About](#-about)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [Database Setup](#-database-setup)
-- [Running Locally](#-running-locally)
-- [API Reference](#-api-reference)
-- [Deployment](#-deployment)
-- [License](#-license)
+<p align="center">
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-deployment">Deployment</a> •
+  <a href="#-free-tier-limits">Free Tier Limits</a>
+</p>
 
 ---
 
 ## 🧠 About
 
-**VaultDrop** is a full-stack cloud storage web application inspired by Google Drive. It allows authenticated users to upload, search, preview, share, and delete files — all powered by a serverless architecture with edge-ready database and CDN-backed file storage.
+**VaultDrop** is a full-stack cloud storage web application inspired by Google Drive. It lets authenticated users upload, search, preview, share, and delete files — powered entirely by a serverless architecture with an edge-ready database and CDN-backed file delivery.
 
 Built with **Next.js 16 App Router**, **Turso (libSQL/SQLite)** for the database, **Cloudinary** for file storage & delivery, and **NextAuth v5** for secure credential-based authentication.
 
@@ -51,17 +36,17 @@ Built with **Next.js 16 App Router**, **Turso (libSQL/SQLite)** for the database
 | Feature | Description |
 |---|---|
 | 🔐 **Secure Authentication** | Email/password auth via NextAuth v5 with JWT sessions & bcrypt password hashing |
-| 📤 **Drag & Drop Upload** | Upload files up to 100 MB using an intuitive drag-and-drop modal (React Dropzone) |
-| 🔍 **File Search** | Search files by name with real-time query filtering |
-| 👁️ **File Preview** | In-browser preview for images, videos, and PDFs with a dedicated preview page |
+| 📤 **Drag & Drop Upload** | Upload files up to 100 MB via an intuitive drag-and-drop modal (React Dropzone) |
+| 🔍 **File Search** | Instantly search files by name with real-time query filtering |
+| 👁️ **File Preview** | In-browser preview for images, videos, and PDFs on a dedicated preview page |
 | 📥 **Download & Delete** | One-click download and secure file deletion (removes from both DB and Cloudinary) |
 | 🔗 **Share Files** | Share file links via Copy Link, WhatsApp, or Email directly from the UI |
 | 🌙 **Dark Mode** | System-aware dark/light theme toggle with `next-themes` |
 | ⚡ **Serverless APIs** | All backend logic runs as Next.js serverless API routes |
 | 🗃️ **Edge Database** | Turso (libSQL) with Drizzle ORM for type-safe, edge-compatible SQL |
 | ☁️ **CDN File Storage** | Cloudinary handles file uploads with automatic CDN delivery & format optimization |
-| 🧩 **shadcn/ui Components** | Beautiful, accessible UI components (Dialog, DropdownMenu, Button, Input, etc.) |
-| 📱 **Responsive Design** | Fully responsive layout with a sidebar navigation and responsive file grid |
+| 🧩 **Glassmorphic UI** | Minimalist, professional design with backdrop blur, subtle shadows, and smooth transitions |
+| 📱 **Responsive Design** | Fully responsive layout with sidebar navigation and adaptive file grid |
 | 🚫 **Upload Cancellation** | Abort in-progress uploads with proper cleanup via AbortController |
 | 🎨 **Skeleton Loading** | Animated skeleton placeholders while files are loading |
 
@@ -125,59 +110,57 @@ Built with **Next.js 16 App Router**, **Turso (libSQL/SQLite)** for the database
 ## 📁 Project Structure
 
 ```
-nextdrive-main/
+vaultdrop/
 ├── app/
 │   ├── (auth)/
-│   │   ├── login/page.tsx          # Login page (email/password)
-│   │   └── register/page.tsx       # Registration page
+│   │   ├── login/page.tsx            # Login page with glassmorphic card
+│   │   └── register/page.tsx         # Registration page
 │   ├── (dashboard)/
-│   │   └── dashboard/page.tsx      # Main dashboard with sidebar + file grid
+│   │   └── dashboard/page.tsx        # Main dashboard with sidebar + file grid
 │   ├── api/
 │   │   ├── auth/
-│   │   │   ├── [...nextauth]/route.ts   # NextAuth API handler
-│   │   │   └── register/route.ts        # User registration endpoint
+│   │   │   ├── [...nextauth]/route.ts  # NextAuth API handler
+│   │   │   └── register/route.ts       # User registration endpoint
 │   │   ├── files/
-│   │   │   ├── route.ts            # GET: List/search user files
-│   │   │   └── [id]/route.ts       # DELETE: Remove file from DB + Cloudinary
-│   │   └── upload/route.ts         # POST: Upload file to Cloudinary + save metadata
+│   │   │   ├── route.ts              # GET: List/search user files
+│   │   │   └── [id]/route.ts         # DELETE: Remove file from DB + Cloudinary
+│   │   └── upload/route.ts           # POST: Upload file to Cloudinary + save metadata
 │   ├── preview/
-│   │   └── [id]/page.tsx           # File preview page (image/video/PDF)
-│   ├── globals.css                 # Global styles + shadcn/ui theme tokens
-│   ├── layout.tsx                  # Root layout (Inter font, ThemeProvider, Toaster)
-│   └── page.tsx                    # Landing/home page
+│   │   └── [id]/page.tsx             # File preview page (image/video/PDF)
+│   ├── globals.css                   # Global styles + shadcn/ui theme tokens
+│   ├── layout.tsx                    # Root layout (Inter font, ThemeProvider, Toaster)
+│   └── page.tsx                      # Landing page
 │
 ├── components/
 │   ├── files/
-│   │   ├── FileCard.tsx            # Individual file card with actions (share/download/delete)
-│   │   ├── FileGrid.tsx            # Responsive grid of file cards with search
-│   │   └── UploadModal.tsx         # Drag-and-drop upload dialog
+│   │   ├── FileCard.tsx              # File card with share/download/delete actions
+│   │   ├── FileGrid.tsx              # Responsive grid of file cards with search
+│   │   └── UploadModal.tsx           # Drag-and-drop upload dialog with cancellation
 │   ├── layout/
-│   │   └── Sidebar.tsx             # Navigation sidebar with theme toggle & logout
-│   ├── ui/                         # shadcn/ui components (button, dialog, input, etc.)
-│   └── theme-provider.tsx          # next-themes wrapper component
+│   │   └── Sidebar.tsx               # Navigation sidebar with theme toggle & logout
+│   ├── ui/                           # shadcn/ui components (button, dialog, input, etc.)
+│   └── theme-provider.tsx            # next-themes wrapper component
 │
 ├── lib/
-│   ├── cloudinary.ts               # Cloudinary SDK configuration
-│   ├── db.ts                       # Drizzle ORM + Turso (libSQL) client setup
-│   ├── schema.ts                   # Database schema (users & files tables)
-│   └── utils.ts                    # Utility functions (cn for class merging)
+│   ├── cloudinary.ts                 # Cloudinary SDK configuration
+│   ├── db.ts                         # Drizzle ORM + Turso (libSQL) client setup
+│   ├── schema.ts                     # Database schema (users & files tables)
+│   └── utils.ts                      # Utility functions (cn for class merging)
 │
-├── auth.ts                         # NextAuth v5 configuration (Credentials + JWT)
-├── proxy.ts                        # Middleware for route protection (/dashboard, /preview)
-├── drizzle.config.ts               # Drizzle Kit config for migrations
-├── next.config.mjs                 # Next.js config (Cloudinary remote images, TS settings)
-├── components.json                 # shadcn/ui configuration
-├── tailwind.config / postcss       # Tailwind CSS 4 + PostCSS setup
-├── tsconfig.json                   # TypeScript configuration
-├── package.json                    # Dependencies & scripts
-└── .gitignore                      # Git ignore rules
+├── auth.ts                           # NextAuth v5 configuration (Credentials + JWT)
+├── proxy.ts                          # Middleware for route protection (/dashboard, /preview)
+├── drizzle.config.ts                 # Drizzle Kit config for schema migrations
+├── next.config.mjs                   # Next.js config (Cloudinary remote images)
+├── components.json                   # shadcn/ui configuration
+├── postcss.config.mjs                # PostCSS config for Tailwind CSS 4
+├── tsconfig.json                     # TypeScript configuration
+├── package.json                      # Dependencies & scripts
+└── .gitignore                        # Git ignore rules
 ```
 
 ---
 
 ## 📋 Prerequisites
-
-Ensure you have the following installed/set up before running the project:
 
 | Requirement | Version | Notes |
 |---|---|---|
@@ -194,8 +177,8 @@ Ensure you have the following installed/set up before running the project:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/nextdrive.git
-cd nextdrive
+git clone https://github.com/AmanVerma1067/VaultDrop.git
+cd VaultDrop
 ```
 
 ### 2. Install Dependencies
@@ -209,32 +192,10 @@ npm install
 Create a `.env.local` file in the project root:
 
 ```bash
-cp .env.example .env.local   # if .env.example exists
-# OR create manually:
 touch .env.local
 ```
 
-Then populate it with the required variables (see [Environment Variables](#-environment-variables) section below).
-
-### 4. Set Up the Database
-
-See [Database Setup](#-database-setup) section below.
-
-### 5. Run the Development Server
-
-```bash
-npm run dev
-```
-
-### 6. Open in Browser
-
-Navigate to [http://localhost:3000](http://localhost:3000) and you're ready to go!
-
----
-
-## 🔐 Environment Variables
-
-Create a `.env.local` file in the root directory with the following variables:
+Add the following variables (see [How to Get These Values](#how-to-get-these-values) below):
 
 ```env
 # ─── Turso Database ───────────────────────────────
@@ -248,11 +209,30 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 # ─── NextAuth ─────────────────────────────────────
 AUTH_SECRET=your_random_secret_key
-# Generate one with: openssl rand -base64 32
 AUTH_URL=http://localhost:3000
 ```
 
-### How to Get These Values
+### 4. Push Database Schema
+
+```bash
+npx drizzle-kit push
+```
+
+This creates the `users` and `files` tables in your Turso database.
+
+### 5. Run the Development Server
+
+```bash
+npm run dev
+```
+
+### 6. Open in Browser
+
+Navigate to [http://localhost:3000](http://localhost:3000) — you're good to go!
+
+---
+
+## 🔐 How to Get These Values
 
 <details>
 <summary><strong>🗄️ Turso (Database)</strong></summary>
@@ -268,15 +248,15 @@ AUTH_URL=http://localhost:3000
    ```
 4. Create a database:
    ```bash
-   turso db create nextdrive
+   turso db create vaultdrop
    ```
 5. Get your database URL:
    ```bash
-   turso db show nextdrive --url
+   turso db show vaultdrop --url
    ```
 6. Create an auth token:
    ```bash
-   turso db tokens create nextdrive
+   turso db tokens create vaultdrop
    ```
 
 </details>
@@ -306,19 +286,7 @@ Paste the output as your `AUTH_SECRET` value.
 
 ---
 
-## 🗃️ Database Setup
-
-This project uses **Drizzle ORM** with **Turso (libSQL)** as the database. You need to push the schema to your Turso database before first use.
-
-### Push Schema to Database
-
-```bash
-npx drizzle-kit push
-```
-
-This will create the `users` and `files` tables in your Turso database based on the schema defined in `lib/schema.ts`.
-
-### Schema Overview
+## 🗃️ Database Schema
 
 **`users` table:**
 | Column | Type | Constraints |
@@ -341,22 +309,27 @@ This will create the `users` and `files` tables in your Turso database based on 
 | `uploadedBy` | TEXT | NOT NULL, FK → `users.id` |
 | `createdAt` | INTEGER (timestamp) | DEFAULT current timestamp |
 
-### Using Drizzle Studio (Optional)
-
-To visually inspect your database:
+<details>
+<summary><strong>Optional: Inspect database with Drizzle Studio</strong></summary>
 
 ```bash
 npx drizzle-kit studio
 ```
 
-### Local Development (Without Turso)
+</details>
 
-For local development without a Turso account, the app falls back to a local SQLite file (`local.db`) when `TURSO_DATABASE_URL` is not set. Just run the schema push against the local file:
+<details>
+<summary><strong>Optional: Local development without Turso</strong></summary>
+
+If `TURSO_DATABASE_URL` is not set, the app falls back to a local SQLite file (`local.db`):
 
 ```bash
-# Without TURSO_DATABASE_URL set, it uses file:./local.db
+# Without Turso credentials, uses file:./local.db
 npx drizzle-kit push
+npm run dev
 ```
+
+</details>
 
 ---
 
@@ -378,7 +351,7 @@ The app will be available at **http://localhost:3000**.
 
 ### Quick Workflow
 
-1. Open `http://localhost:3000` → you'll see the landing page
+1. Open `http://localhost:3000` → landing page
 2. Click **"Get Started"** → navigate to `/register`
 3. Create an account with name, email, and password
 4. Log in with your credentials at `/login`
@@ -392,36 +365,28 @@ The app will be available at **http://localhost:3000**.
 
 All API routes are protected by NextAuth session validation (except registration).
 
-### `POST /api/auth/register`
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/register` | Register a new user account |
+| `POST` | `/api/upload` | Upload a file (multipart/form-data, max 100 MB) |
+| `GET` | `/api/files?q={search}` | List/search files for the authenticated user |
+| `DELETE` | `/api/files/:id` | Delete a file from Cloudinary and the database |
 
-Register a new user account.
+<details>
+<summary><strong>Detailed request/response examples</strong></summary>
 
-**Request Body:**
+#### `POST /api/auth/register`
 ```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "securepassword"
-}
-```
+// Request Body
+{ "name": "John Doe", "email": "john@example.com", "password": "securepassword" }
 
-**Response:** `200 OK`
-```json
+// Response: 200 OK
 { "success": true }
 ```
 
----
-
-### `POST /api/upload`
-
-Upload a file to Cloudinary and save metadata.
-
-**Headers:** Requires authenticated session  
-**Body:** `multipart/form-data` with a `file` field  
-**Max Size:** 100 MB
-
-**Response:** `200 OK`
+#### `POST /api/upload`
 ```json
+// Response: 200 OK
 {
   "file": {
     "id": "uuid",
@@ -429,51 +394,37 @@ Upload a file to Cloudinary and save metadata.
     "fileUrl": "https://res.cloudinary.com/...",
     "fileType": "image/jpeg",
     "size": 245760,
-    "publicId": "nextdrive/1714..._photo.jpg",
-    "uploadedBy": "user-uuid",
-    "createdAt": "2026-05-02T..."
+    "publicId": "vaultdrop/1714..._photo.jpg",
+    "uploadedBy": "user-uuid"
   }
 }
 ```
 
----
-
-### `GET /api/files?q={search}`
-
-Fetch all files for the authenticated user, optionally filtered by filename.
-
-**Query Params:**
-- `q` (optional) — search query to filter by filename
-
-**Response:** `200 OK`
+#### `GET /api/files?q=photo`
 ```json
+// Response: 200 OK
 {
   "files": [
     {
       "id": "uuid",
-      "filename": "document.pdf",
+      "filename": "photo.jpg",
       "fileUrl": "https://res.cloudinary.com/...",
-      "fileType": "application/pdf",
-      "size": 1048576,
-      "publicId": "nextdrive/...",
-      "uploadedBy": "user-uuid",
-      "createdAt": "2026-05-02T..."
+      "fileType": "image/jpeg",
+      "size": 245760,
+      "publicId": "vaultdrop/...",
+      "uploadedBy": "user-uuid"
     }
   ]
 }
 ```
 
----
-
-### `DELETE /api/files/:id`
-
-Delete a file from Cloudinary and remove its database record.
-
-**Headers:** Requires authenticated session  
-**Response:** `200 OK`
+#### `DELETE /api/files/:id`
 ```json
+// Response: 200 OK
 { "success": true }
 ```
+
+</details>
 
 ---
 
@@ -482,6 +433,11 @@ Delete a file from Cloudinary and remove its database record.
 ### Deploy to Vercel
 
 1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
 
 2. **Import the repository on Vercel**
    - Go to [vercel.com/new](https://vercel.com/new)
@@ -489,19 +445,42 @@ Delete a file from Cloudinary and remove its database record.
    - Framework preset will auto-detect **Next.js**
 
 3. **Add Environment Variables**
-   
-   In the Vercel Dashboard → Project Settings → Environment Variables, add:
-   - `TURSO_DATABASE_URL`
-   - `TURSO_AUTH_TOKEN`
-   - `CLOUDINARY_CLOUD_NAME`
-   - `CLOUDINARY_API_KEY`
-   - `CLOUDINARY_API_SECRET`
-   - `AUTH_SECRET`
-   - `AUTH_URL` → `https://your-domain.vercel.app`
+
+   In Vercel Dashboard → Project Settings → Environment Variables, add:
+
+   | Variable | Value |
+   |---|---|
+   | `TURSO_DATABASE_URL` | Your Turso database URL |
+   | `TURSO_AUTH_TOKEN` | Your Turso auth token |
+   | `CLOUDINARY_CLOUD_NAME` | Your Cloudinary cloud name |
+   | `CLOUDINARY_API_KEY` | Your Cloudinary API key |
+   | `CLOUDINARY_API_SECRET` | Your Cloudinary API secret |
+   | `AUTH_SECRET` | Your generated secret (`openssl rand -base64 32`) |
+   | `AUTH_URL` | `https://your-domain.vercel.app` |
 
 4. **Deploy** 🚀
 
-> **Note:** Turso's free tier and Cloudinary's free tier are both generous enough for production use. Vercel automatically handles serverless function scaling.
+   Vercel automatically handles serverless function scaling, edge caching, and zero-config builds.
+
+---
+
+## 💰 Free Tier Limits
+
+VaultDrop is designed to run entirely on free tiers. Here are the limits to be aware of:
+
+| Service | Free Tier Allowance | Notes |
+|---|---|---|
+| **Cloudinary** | 25 GB storage, 25 GB bandwidth/month | Supports images, videos, PDFs, and raw files. Auto-optimized delivery via CDN. Individual upload limit: **100 MB per file**. |
+| **Turso** | 9 GB storage, 500 databases, 1 billion row reads/month | Edge-replicated SQLite. More than enough for file metadata storage. |
+| **Vercel** | 100 GB bandwidth/month, serverless function execution | Auto-scaling serverless functions. Generous limits for personal/small-team use. |
+
+> **Tip:** These free tiers are generous enough for personal projects and small teams. For higher traffic, each service offers affordable paid plans with seamless upgrades.
+
+### Upload Constraints
+
+- **Max file size per upload:** 100 MB (enforced client-side by React Dropzone)
+- **Supported file types:** All file types are accepted — images, videos, PDFs, documents, archives, etc.
+- **Preview support:** In-browser preview is available for images, videos (MP4, etc.), and PDFs. Other file types can be downloaded directly.
 
 ---
 
