@@ -506,19 +506,6 @@ Delete a file from Cloudinary and remove its database record.
 
 ---
 
-## 💡 Suggested Project Name
-
-> ### **VaultDrop**
-> *A short, catchy name that evokes a secure vault for your files with the simplicity of a drag-and-drop experience.*
-
-Other name ideas:
-- **CloudStash** — Stash your files in the cloud
-- **FileNest** — A cozy nest for your files
-- **DropHive** — Hive of all your dropped files
-- **SkyVault** — Your vault in the sky
-
----
-
 ## 📜 License
 
 This project is open source and available under the [MIT License](LICENSE).
