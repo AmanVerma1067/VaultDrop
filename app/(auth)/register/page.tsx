@@ -40,33 +40,35 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-950 p-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800">
-        <div className="flex flex-col items-center mb-8">
-          <HardDrive size={36} className="text-blue-600 mb-2" />
-          <h1 className="text-2xl font-bold">Create Account</h1>
-          <p className="text-gray-500 text-sm">Join NextDrive today</p>
+      <div className="w-full max-w-md p-8 sm:p-10 bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl">
+        <div className="flex flex-col items-center mb-10">
+          <div className="p-3 bg-primary/10 rounded-2xl mb-4">
+            <HardDrive size={28} className="text-primary" />
+          </div>
+          <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Create an account</h1>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Join VaultDrop today</p>
         </div>
 
-        <form onSubmit={handleRegister} className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
-            <Input id="name" placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} required />
+            <Label htmlFor="name" className="text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</Label>
+            <Input id="name" placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} required className="h-12 px-4 rounded-xl bg-gray-50/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-800 focus:ring-primary/20 transition-all" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <Label htmlFor="email" className="text-xs font-medium text-gray-500 uppercase tracking-wider">Email</Label>
+            <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="h-12 px-4 rounded-xl bg-gray-50/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-800 focus:ring-primary/20 transition-all" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <Label htmlFor="password" className="text-xs font-medium text-gray-500 uppercase tracking-wider">Password</Label>
+            <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required className="h-12 px-4 rounded-xl bg-gray-50/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-800 focus:ring-primary/20 transition-all" />
           </div>
-          <Button type="submit" className="w-full py-5 mt-4 bg-blue-600 hover:bg-blue-700 text-white" disabled={loading}>
-            {loading ? "Creating account..." : "Sign Up"}
+          <Button type="submit" className="w-full h-12 mt-6 rounded-xl font-medium text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all" disabled={loading}>
+            {loading ? "Creating account..." : "Sign up"}
           </Button>
         </form>
 
-        <p className="text-center mt-6 text-sm text-gray-500">
-          Already have an account? <Link href="/login" className="text-blue-600 hover:underline">Log in</Link>
+        <p className="text-center mt-8 text-sm text-gray-500">
+          Already have an account? <Link href="/login" className="text-primary font-medium hover:underline">Log in</Link>
         </p>
       </div>
     </div>

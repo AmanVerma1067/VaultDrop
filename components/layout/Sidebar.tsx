@@ -20,8 +20,8 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 border-r border-gray-200 dark:border-gray-800 h-screen flex flex-col p-4 bg-white dark:bg-gray-900">
-      <h1 className="text-xl font-bold mb-6 flex items-center gap-2">
-        <HardDrive className="text-blue-600" /> NextDrive
+      <h1 className="text-xl font-bold mb-6 flex items-center gap-2 tracking-tight">
+        <HardDrive className="text-primary" /> VaultDrop
       </h1>
       <nav className="flex-1 space-y-1">
         {navItems.map((item) => (

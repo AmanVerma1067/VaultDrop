@@ -38,12 +38,12 @@ export default function PreviewPage() {
 
   const handleShareWhatsApp = () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
-    window.open(`https://wa.me/?text=${encodeURIComponent("Check out my file on NextDrive: " + url)}`, "_blank");
+    window.open(`https://wa.me/?text=${encodeURIComponent("Check out my file on VaultDrop: " + url)}`, "_blank");
   };
 
   const handleShareEmail = () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
-    window.location.href = `mailto:?subject=File on NextDrive&body=${encodeURIComponent("Check out this file on NextDrive: " + url)}`;
+    window.location.href = `mailto:?subject=File on VaultDrop&body=${encodeURIComponent("Check out this file on VaultDrop: " + url)}`;
   };
 
 
